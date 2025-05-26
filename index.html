@@ -91,9 +91,9 @@
     .config-link-name svg use[href="#android"] {
       color: var(--android-icon-color);
     }
-    /* Add a new style for the Happy icon if needed */
-    .config-link-name svg use[href="#happy-icon"] {
-      color: #FF5733; /* Example color for Happy icon */
+    /* Add a new style for the Happ icon if needed */
+    .config-link-name svg use[href="#happ-icon"] {
+      color: #FF5733; /* Example color for Happ icon */
     }
 
 
@@ -595,16 +595,10 @@
             v2rayNWindows: 'V2RayN ویندوز',
             v2rayNGAndroid: 'V2RayNG اندروید',
             streisandApple: 'Streisand آیفون',
-            happyAndroid: 'Happy اندروید',
-            happyApple: 'Happy آیفون',
-            happyWindows: 'Happy ویندوز',
-            happyMac: 'Happy مک',
-            addSubscription: 'افزودن اشتراک',
-            addSubscriptionDesc: 'با توجه به برنامه ای که نصب کرده اید روی دکمه مربوط به آن کلیک کنید',
-            hiddifySettings: 'تنظیمات هیدیفای',
-            singboxSettings: 'تنظیمات سینگ باکس',
-            connectAndUse: 'اتصال و استفاده',
-            connectAndUseDesc: 'در برنامه هیدیفای روی دکمه CONNECT و در سینگ باکس روی ENABLE کلیک کنید. پیشنهاد می شود روزانه لینک اشتراک خود را از داخل اپلیکیشن دانلود شده آپدیت کنید',
+            happAndroid: 'Happ اندروید',
+            happApple: 'Happ آیفون',
+            happWindows: 'Happ ویندوز',
+            happMac: 'Happ مک',
             qrCode: 'کد QR',
             download: 'دانلود',
             start: 'شروع',
@@ -642,16 +636,10 @@
             v2rayNWindows: 'V2RayN Windows',
             v2rayNGAndroid: 'V2RayNG Android',
             streisandApple: 'Streisand iPhone',
-            happyAndroid: 'Happy Android',
-            happyApple: 'Happy iPhone',
-            happyWindows: 'Happy Windows',
-            happyMac: 'Happy Mac',
-            addSubscription: 'Add Subscription',
-            addSubscriptionDesc: 'Click on the relevant button for the app you have installed',
-            hiddifySettings: 'Hiddify Settings',
-            singboxSettings: 'Sing-box Settings',
-            connectAndUse: 'Connect and Use',
-            connectAndUseDesc: 'Click CONNECT in Hiddify app or ENABLE in Sing-box. It is recommended to update your subscription link daily from within the app.',
+            happAndroid: 'Happ Android',
+            happApple: 'Happ iPhone',
+            happWindows: 'Happ Windows',
+            happMac: 'Happ Mac',
             qrCode: 'QR Code',
             download: 'Download',
             start: 'Start',
@@ -786,14 +774,6 @@
           return `<span class="traffic-value">${this.formatBytes(usedTraffic)} / ${this.formatBytes(dataLimit)}</span>`;
         },
 
-        importHiddify() {
-          window.location.href = `hiddify://import/${'{{ user.subscription_url }}'}`;
-        },
-        
-        importSingbox() {
-          window.location.href = `sing-box://import-remote-profile?url=${'{{ user.subscription_url }}'}#{{ user.username }}`;
-        },
-
         copyLink(link, button) {
           navigator.clipboard.writeText(link);
           button.innerHTML = `<svg class='bi' width='16' height='16'><use href='#check-square'></use></svg> <span>${this.translations[this.currentLang].copied}</span>`;
@@ -916,7 +896,7 @@
     
     <div class="connection-buttons">
      <a class="btn my-btn-outline" href="https://t.me/YOUR-TELEGRAM-USERNAME" role="button" rel="noopener noreferrer" target="_blank">
-      <svg class="bi me-1"><use href="#info-circle"></use></svg>
+     <svg class="bi me-1"><use href="#info-circle"></use></svg>
        <span x-text="translations[currentLang].telegramSupport"></span>
      </a>
     <button class="btn my-btn-outline" data-bs-toggle="modal" data-bs-target="#get-link-modal">
@@ -1025,8 +1005,7 @@
     <div class="tab-content">
       <div id="tab-pc" class="tab-pane my-tab-pane fade show active">
         <div class="row g-3">
-          <div class="col-12 col-lg-6">
-            <div class="my-block-big h-100">
+          <div class="col-12"> <div class="my-block-big h-100">
               <span class="my-step-counter mb-3"></span>
               <h5 class="my-text-heading fw-semibold" x-text="translations[currentLang].downloadApps"></h5>
               <p class="my-text-content" x-text="translations[currentLang].downloadAppsDesc"></p>
@@ -1039,14 +1018,14 @@
                   </div>
                   <div class="config-link-buttons">
                     <a class="download-button" 
-                    href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN.zip" 
+                    href="https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-With-Core.zip" 
                     role="button" 
                     rel="noopener noreferrer" 
                     target="_blank" 
-                    @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://github.com/2dust/v2rayN/releases/latest/download/v2rayN.zip', '_blank'), 300);">
+                    @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-With-Core.zip', '_blank'), 300);">
                    <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
                    <span x-text="translations[currentLang].download || 'دانلود'"></span>
-                   </a>
+                    </a>
                   </div>
                 </div>
 
@@ -1057,13 +1036,13 @@
                   </div>
                   <div class="config-link-buttons">
                     <a class="download-button" 
-                       href="https://github.com/2dust/v2rayNG/releases/latest/download/v2rayNG_1.8.10.apk" 
+                       href="https://dev-ir.github.io/v2rayNG-Auto-Downloader/" 
                        role="button" 
                        rel="noopener noreferrer" 
                        target="_blank" 
-                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://github.com/2dust/v2rayNG/releases/latest/download/v2rayNG_1.8.10.apk', '_blank'), 300);">
-                       <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
-                       <span x-text="translations[currentLang].download || 'دانلود'"></span>
+                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://dev-ir.github.io/v2rayNG-Auto-Downloader/', '_blank'), 300);">
+                        <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
+                        <span x-text="translations[currentLang].download || 'دانلود'"></span>
                     </a>
                   </div>
                 </div>
@@ -1080,8 +1059,8 @@
                        rel="noopener noreferrer" 
                        target="_blank" 
                        @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://apps.apple.com/us/app/streisand/id6470396001', '_blank'), 300);">
-                       <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
-                       <span x-text="translations[currentLang].download || 'دانلود'"></span>
+                        <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
+                        <span x-text="translations[currentLang].download || 'دانلود'"></span>
                     </a>
                   </div>
                 </div>
@@ -1089,17 +1068,17 @@
                 <div class="config-link">
                   <div class="config-link-name">
                     <svg class="bi" width="16" height="16"><use href="#android"></use></svg>
-                    <span x-text="translations[currentLang].happyAndroid"></span>
+                    <span x-text="translations[currentLang].happAndroid"></span>
                   </div>
                   <div class="config-link-buttons">
                     <a class="download-button" 
-                       href="https://play.google.com/store/apps/details?id=com.happyvpn.android" 
+                       href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" 
                        role="button" 
                        rel="noopener noreferrer" 
                        target="_blank" 
-                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://play.google.com/store/apps/details?id=com.happyvpn.android', '_blank'), 300);">
-                       <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
-                       <span x-text="translations[currentLang].download || 'دانلود'"></span>
+                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk', '_blank'), 300);">
+                        <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
+                        <span x-text="translations[currentLang].download || 'دانلود'"></span>
                     </a>
                   </div>
                 </div>
@@ -1107,17 +1086,17 @@
                 <div class="config-link">
                   <div class="config-link-name">
                     <svg class="bi" width="16" height="16"><use href="#apple"></use></svg>
-                    <span x-text="translations[currentLang].happyApple"></span>
+                    <span x-text="translations[currentLang].happApple"></span>
                   </div>
                   <div class="config-link-buttons">
                     <a class="download-button" 
-                       href="https://apps.apple.com/us/app/happy-vpn/id6469601193" 
+                       href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215?platform=iphone" 
                        role="button" 
                        rel="noopener noreferrer" 
                        target="_blank" 
-                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://apps.apple.com/us/app/happy-vpn/id6469601193', '_blank'), 300);">
-                       <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
-                       <span x-text="translations[currentLang].download || 'دانلود'"></span>
+                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://apps.apple.com/us/app/happ-proxy-utility/id6504287215?platform=iphone'), 300);">
+                        <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
+                        <span x-text="translations[currentLang].download || 'دانلود'"></span>
                     </a>
                   </div>
                 </div>
@@ -1125,17 +1104,17 @@
                 <div class="config-link">
                   <div class="config-link-name">
                     <svg class="bi" width="16" height="16"><use href="#microsoft"></use></svg>
-                    <span x-text="translations[currentLang].happyWindows"></span>
+                    <span x-text="translations[currentLang].happWindows"></span>
                   </div>
                   <div class="config-link-buttons">
                     <a class="download-button" 
-                       href="https://happyvpn.com/download/windows" 
+                       href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x86.exe" 
                        role="button" 
                        rel="noopener noreferrer" 
                        target="_blank" 
-                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://happyvpn.com/download/windows', '_blank'), 300);">
-                       <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
-                       <span x-text="translations[currentLang].download || 'دانلود'"></span>
+                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x86.exe'), 300);">
+                        <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
+                        <span x-text="translations[currentLang].download || 'دانلود'"></span>
                     </a>
                   </div>
                 </div>
@@ -1143,17 +1122,17 @@
                 <div class="config-link">
                   <div class="config-link-name">
                     <svg class="bi" width="16" height="16"><use href="#apple"></use></svg>
-                    <span x-text="translations[currentLang].happyMac"></span>
+                    <span x-text="translations[currentLang].happMac"></span>
                   </div>
                   <div class="config-link-buttons">
                     <a class="download-button" 
-                       href="https://happyvpn.com/download/mac" 
+                       href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.macOS.x86_64.app.tar.gz" 
                        role="button" 
                        rel="noopener noreferrer" 
                        target="_blank" 
-                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('https://happyvpn.com/download/mac', '_blank'), 300);">
-                       <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
-                       <span x-text="translations[currentLang].download || 'دانلود'"></span>
+                       @click="handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].start}</span>`); setTimeout(() => window.open('hhttps://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.macOS.x86_64.app.tar.gz'), 300);">
+                        <svg class="bi" width="16" height="16"><use href="#cloud-arrow-down"></use></svg>
+                        <span x-text="translations[currentLang].download || 'دانلود'"></span>
                     </a>
                   </div>
                 </div>
@@ -1162,54 +1141,7 @@
             </div>
           </div>
           
-          <div class="col-12 col-lg-6">
-            <div class="equal-height-container">
-              <div class="my-block-big mb-3">
-                <span class="my-step-counter mb-3"></span>
-                <h5 class="my-text-heading fw-semibold" x-text="translations[currentLang].addSubscription"></h5>
-                <p class="my-text-content" x-text="translations[currentLang].addSubscriptionDesc"></p>
-                
-                <div class="download-buttons">
-                  <div class="config-link">
-                    <div class="config-link-name">
-                      <svg class="bi" width="16" height="16"><use href="#gear-fill"></use></svg>
-                      <span x-text="translations[currentLang].hiddifySettings"></span> 
-                    </div>
-                    <div class="config-link-buttons">
-                      <a class="settings-button" 
-                         href="#" 
-                         @click.prevent="importHiddify(); handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].enter}</span>`)">
-                         <svg class="bi" width="16" height="16"><use href="#cloud-plus"></use></svg>
-                         <span x-text="translations[currentLang].settings || 'تنظیمات'"></span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div class="config-link">
-                    <div class="config-link-name">
-                      <svg class="bi" width="16" height="16"><use href="#gear-fill"></use></svg>
-                      <span x-text="translations[currentLang].singboxSettings"></span>
-                    </div>
-                    <div class="config-link-buttons">
-                      <a class="settings-button" 
-                         href="#" 
-                         @click.prevent="importSingbox(); handleButtonFeedback($el, $el.innerHTML, `<svg class='bi' width='16' height='16'><use href='#cloud-check'></use></svg> <span>${translations[currentLang].enter}</span>`)">
-                         <svg class="bi" width="16" height="16"><use href="#cloud-plus"></use></svg>
-                         <span x-text="translations[currentLang].settings || 'تنظیمات'"></span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="my-block-big">
-                <span class="my-step-counter mb-3"></span>
-                <h5 class="my-text-heading fw-semibold" x-text="translations[currentLang].connectAndUse"></h5>
-                <p class="my-text-content mb-2" x-text="translations[currentLang].connectAndUseDesc"></p>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
