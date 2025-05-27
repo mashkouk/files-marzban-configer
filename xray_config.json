@@ -55,7 +55,7 @@
             "streamSettings": {
                 "network": "ws",
                 "wsSettings": {
-                    "path": "/"
+                    "path": "/game?ed=2048"
                 },
                 "security": "tls",
                 "tlsSettings": {
