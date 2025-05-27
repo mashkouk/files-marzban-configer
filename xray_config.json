@@ -1,95 +1,38 @@
 {
-    "log": {
-        "loglevel": "warning"
-    },
-    "dns": {
-        "servers": [
-            "8.8.4.4",
-            "76.76.10.0",
-            "localhost"
-        ]
-    },
-    "routing": {
-        "domainStrategy": "IPOnDemand",
-        "domainMatcher": "hybrid",
-        "rules": [
-            {
-                "outboundTag": "warp",
-                "domain": [
-                    "geosite:google",
-                    "openai.com",
-                    "ai.com",
-                    "ipinfo.io",
-                    "iplocation.net",
-                    "spotify.com",
-                    "whatismyipaddress.com"
-                ],
-                "type": "field"
-            },
-            {
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "BLOCK",
-                "type": "field"
-            }
-        ]
-    },
-    "inbounds": [
-        {
-            "tag": "CDN",
-            "listen": "0.0.0.0",
-            "port": 443,
-            "protocol": "vless",
-            "settings": {
-                "clients": [],
-                "decryption": "none"
-            },
-            "sniffing": {
-                "enabled": true,
-                "destOverride": [
-                    "http",
-                    "tls"
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/game?ed=2048"
-                },
-                "security": "tls",
-                "tlsSettings": {
-                    "serverName": "آدرس ساب دامنه که تیکش را روشن کردید وارد کنید",
-                    "certificates": [
-                        {
-                            "certificateFile": "/var/lib/marzban/certs/domain/cer.pem",
-                            "keyFile": "/var/lib/marzban/certs/domain/key.pem"
-                        }
-                    ],
-                    "minVersion": "1.2",
-                    "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
-                }
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "tag": "DIRECT"
-        },
-        {
-            "tag": "warp",
-            "protocol": "freedom",
-            "streamSettings": {
-                "sockopt": {
-                    "tcpFastOpen": true,
-                    "interface": "warp"
-                }
-            }
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "BLOCK"
-        }
+  "log": {
+    "loglevel": "warning"
+  },
+  "routing": {
+    "rules": [
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "BLOCK",
+        "type": "field"
+      }
     ]
+  },
+  "inbounds": [
+    {
+      "tag": "Shadowsocks TCP",
+      "listen": "0.0.0.0",
+      "port": 1080,
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [],
+        "network": "tcp,udp"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "DIRECT"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "BLOCK"
+    }
+  ]
 }
