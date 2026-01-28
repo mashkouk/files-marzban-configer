@@ -7,7 +7,6 @@ services:
     volumes:
       - /var/lib/marzban:/var/lib/marzban
       - /var/lib/marzban/logs:/var/lib/marzban-node
-      - /var/lib/marzban/app:/code/app
     depends_on:
       mariadb:
         condition: service_healthy
